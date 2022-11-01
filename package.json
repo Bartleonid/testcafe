@@ -1,0 +1,19 @@
+{
+    "name": "qa-testcafe",
+    "version": "1.0.0",
+    "scripts": {
+        "ci": "echo todo-by-the-candidate",
+        "unit": "echo todo-by-the-candidate",
+        "e2e": "cd e2e && testcafe chrome test",
+        "lint": "echo todo-by-the-candidate"
+    },
+    "dependencies": {
+        "@types/jest": "27.0.0",
+        "@types/node": "18.7.6",
+        "jest": "27.0.0",
+        "jest-each": "27.0.0"
+    },
+    "devDependencies": {
+        "testcafe": "^2.0.1"
+    }
+}

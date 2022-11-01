@@ -1,0 +1,11 @@
+{
+    "baseUrl": "https://www.musement.com",
+    "timeouts": {
+        "pageLoadTimeout": 10000,
+        "pageRequestTimeout": 10000,
+        "selectorTimeout": 10000,
+        "assertionTimeout": 10000
+    },
+    "speed": 0.01,
+    "disablePageCaching": true
+}

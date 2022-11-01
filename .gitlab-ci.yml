@@ -1,0 +1,33 @@
+---
+variables:
+  # https://github.com/timbru31/docker-node-chrome
+  DOCKER_IMAGE: "registry.hub.docker.com/timbru31/node-chrome"
+  DOCKER_IMAGE_TAG: "alpine"
+  CI_DEBUG_TRACE:
+    value: 'false'
+    description: 'Enable GitLab debug logs (traces): https://docs.gitlab.com/ee/ci/variables/README.html#debug-logging [true/false]'
+
+stages:
+  - unit-tests
+  - e2e-tests
+
+build-and-run-unit-tests:
+  stage: unit-tests
+  image: ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}
+  script:
+    - npm ci
+    - npm run lint
+    - npm run unit
+  allow_failure: true
+  tags:
+    - dev
+
+build-and-run-e2e-tests:
+  stage: e2e-tests
+  image: ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}
+  needs:
+    - job: build-and-run-unit-tests
+  script:
+    - npm run e2e
+  tags:
+    - dev
